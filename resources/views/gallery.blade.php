@@ -19,6 +19,9 @@
             <li>
                 <a href="{{ route('gallery') }}">Gallery</a>
             </li>
+            <li>
+                <a href="{{ route('blog') }}">Blog</a>
+            </li>
         </ul>
     </nav>
 </body>

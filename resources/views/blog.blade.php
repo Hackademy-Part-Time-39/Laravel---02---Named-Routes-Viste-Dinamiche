@@ -8,13 +8,29 @@
 </head>
 <body>
     <h1>{{ $page_title }}</h1>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ route('index') }}">Home page</a>
+            </li>
+            <li>
+                <a href="{{ route('portfolio') }}">Portfolio</a>
+            </li>
+            <li>
+                <a href="{{ route('gallery') }}">Gallery</a>
+            </li>
+            <li>
+                <a href="{{ route('blog') }}">Blog</a>
+            </li>
+        </ul>
+    </nav>
     <p>{{ $paragraph }}</p>
     <ul>
         @foreach ($posts as $post)
             <li>
                 <h2>{{ $post['title'] }}</h2>
                 <p>{{ $post['content'] }}</p>
-                <a href="#">Leggi tutto</a>
+                <a href="/blog/{{ $post['url'] }}/{{ $post['id'] }}">Leggi tutto</a>
             </li>
         @endforeach
     </ul>
