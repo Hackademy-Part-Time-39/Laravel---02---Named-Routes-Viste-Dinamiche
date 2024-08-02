@@ -11,16 +11,19 @@
     <nav>
         <ul>
             <li>
-                <a href="{{ route('index') }}">Home page</a>
+                <a href="{{ route('home.index') }}">Home page</a>
             </li>
             <li>
-                <a href="{{ route('portfolio') }}">Portfolio</a>
+                <a href="{{ route('portfolio.index') }}">Portfolio</a>
             </li>
             <li>
-                <a href="{{ route('gallery') }}">Gallery</a>
+                <a href="{{ route('gallery.index') }}">Gallery</a>
             </li>
             <li>
-                <a href="{{ route('blog') }}">Blog</a>
+                <a href="{{ route('blog.index') }}">Blog</a>
+            </li>
+            <li>
+                <a href="{{ route('prodotti.index') }}">Prodotti</a>
             </li>
         </ul>
     </nav>
@@ -29,7 +32,7 @@
             <li>
                 <h2>{{ $work['title'] }}</h2>
                 <p>{{ $work['content'] }}</p>
-                <a href="/portfolio/{{ $work['url'] }}/{{ $work['id'] }}">Scopri di più</a>
+                <a href="{{ route('portfolio.show', [ $work['url'], $work['id'] ]) }}">Scopri di più</a>
             </li>
         @endforeach
     </ul>

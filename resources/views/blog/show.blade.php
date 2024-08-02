@@ -20,7 +20,7 @@
             <li>
                 <h3>{{ $post['title'] }}</h3>
                 <p>{{ $post['content'] }}</p>
-                <a href="/blog/{{ $post['url'] }}/{{ $post['id'] }}">Leggi tutto</a>
+                <a href="{{ route('blog.show', [ $post['url'], $post['id'] ]) }}">Leggi tutto</a>
             </li>
         @endforeach
     </ul>

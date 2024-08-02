@@ -18,7 +18,7 @@
     @foreach ($works as $work)
         <h3>{{ $work['title'] }}</h3>
         <p>{{ $work['content'] }}</p>
-        <a href="/portfolio/{{ $work['url'] }}/{{ $work['id'] }}">Scopri di più</a>
+        <a href="{{ route('portfolio.show', [ $work['url'], $work['id'] ]) }}">Scopri di più</a>
     @endforeach
 </body>
 </html>

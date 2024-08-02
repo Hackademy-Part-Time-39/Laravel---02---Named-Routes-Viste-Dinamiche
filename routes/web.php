@@ -3,79 +3,42 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\WorkController;
+use App\Http\Controllers\PictureController;
+use App\Http\Controllers\ProductController;
 
 //ROTTA HOME PAGE
 Route::get('/', [HomeController::class, 'index'])
-->name('index');
+->name('home.index');
 
 //ROTTA PORTFOLIO
-Route::get('/portfolio', function () {
-    return view('portfolio', [
-        'title_tag' => 'Gli ultimi lavori',
-        'page_title' => 'Lavori svolti',
-        'works' => [
-            [
-                'id' => '1',
-                'title' => 'Lavoro 1',
-                'content' => 'Lavoro 1',
-                'url' => 'lavoro-1'
-            ],
-            [
-                'id' => '2',
-                'title' => 'Lavoro 2',
-                'content' => 'Lavoro 2',
-                'url' => 'lavoro-2'
-            ],
-            [
-                'id' => '3',
-                'title' => 'Lavoro 3',
-                'content' => 'Lavoro 3',
-                'url' => 'lavoro-3'
-            ]
-        ]
-    ]);
-})
-->name('portfolio');
+Route::get('/portfolio', [WorkController::class, 'index'])
+->name('portfolio.index');
 
 //ROTTA LAVORO SINGOLO
-Route::get('/portfolio/{url}/{id}', function ($url, $id) {
-    return view('single-work', [
-        'title_tag' => 'Dettaglio lavoro',
-        'current_id' => $id,
-        'works' => [
-            [
-                'id' => '1',
-                'title' => 'Lavoro 1',
-                'content' => 'Lavoro 1',
-                'url' => 'lavoro-1'
-            ],
-            [
-                'id' => '2',
-                'title' => 'Lavoro 2',
-                'content' => 'Lavoro 2',
-                'url' => 'lavoro-2'
-            ],
-            [
-                'id' => '3',
-                'title' => 'Lavoro 3',
-                'content' => 'Lavoro 3',
-                'url' => 'lavoro-3'
-            ]
-        ]
-    ]);
-})
-->name('work');
+Route::get('/portfolio/{url}/{id}', [WorkController::class, 'show'])
+->name('portfolio.show');
 
 //ROTTA GALLERY
-Route::get('/gallery', function () {
-    return view('gallery');
-})
-->name('gallery');
+Route::get('/gallery', [PictureController::class, 'index'])
+->name('gallery.index');
+
+//ROTTA IMMAGINE SINGOLA
+Route::get('/gallery/{url}/{id}', [PictureController::class, 'show'])
+->name('gallery.show');
 
 //PAGINA BLOG
 Route::get('/blog', [PostController::class, 'index'])
-->name('blog');
+->name('blog.index');
 
 //PAGINA ARTICOLO
 Route::get('/blog/{url}/{id}', [PostController::class, 'show'])
-->name('article');
+->name('blog.show');
+
+//PAGINA PRODOTTI
+Route::get('/prodotti', [ProductController::class, 'index'])
+->name('prodotti.index');
+
+//PAGINA PRODOTTO SINGOLO
+Route::get('/prodotti/{url}/{id}', [ProductController::class, 'show'])
+->name('prodotti.show');

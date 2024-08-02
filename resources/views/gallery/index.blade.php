@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Home page</h1>
+    <h1>Gallery</h1>
     <nav>
         <ul>
             <li>
@@ -27,5 +27,12 @@
             </li>
         </ul>
     </nav>
+
+    @foreach ($pictures as $picture)
+        <a href="{{ route('gallery.show', [ $picture['slug'], $picture['id'] ]) }}">
+            <img src="{{ $picture['url'] }}" alt="{{ $picture['title'] }}" style="max-width: 250px;">
+        </a>
+        <p>{{ $picture['title'] }}</p>
+    @endforeach
 </body>
 </html>
