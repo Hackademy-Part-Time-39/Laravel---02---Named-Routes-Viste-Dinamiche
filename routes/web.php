@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 
 //ROTTA HOME PAGE
-Route::get('/', function () {
-    return view('home');
-})
+Route::get('/', [HomeController::class, 'index'])
 ->name('index');
 
 //ROTTA PORTFOLIO
@@ -73,71 +73,9 @@ Route::get('/gallery', function () {
 ->name('gallery');
 
 //PAGINA BLOG
-Route::get('/blog', function () {
-    return view('blog', [
-        'title_tag' => 'Gli ultimi articoli e novità',
-        'paragraph' => 'Test',
-        'page_title' => 'Blog abc',
-        'posts' => [
-            [
-                'id' => '1',
-                'title' => 'Titolo 1 abc',
-                'content' => 'Descrizione 1',
-                'url' => 'titolo-1'
-            ],
-            [
-                'id' => '2',
-                'title' => 'Titolo 2',
-                'content' => 'Descrizione 2',
-                'url' => 'titolo-2'
-            ],
-            [
-                'id' => '3',
-                'title' => 'Titolo 3',
-                'content' => 'Descrizione 3',
-                'url' => 'titolo-3'
-            ],
-            [
-                'id' => '4',
-                'title' => 'Titolo 4',
-                'content' => 'Descrizione 4',
-                'url' => 'titolo-4'
-            ]
-        ]
-    ]);
-})
+Route::get('/blog', [PostController::class, 'index'])
 ->name('blog');
 
 //PAGINA ARTICOLO
-Route::get('/blog/{url}/{id}', function ($url, $id) {
-    return view('blog-single', [
-        'current_id' => $id,
-        'posts' => [
-            [
-                'id' => '1',
-                'title' => 'Titolo 1 abc',
-                'content' => 'Descrizione 1',
-                'url' => 'titolo-1'
-            ],
-            [
-                'id' => '2',
-                'title' => 'Titolo 2',
-                'content' => 'Descrizione 2',
-                'url' => 'titolo-2'
-            ],
-            [
-                'id' => '3',
-                'title' => 'Titolo 3',
-                'content' => 'Descrizione 3',
-                'url' => 'titolo-3'
-            ],
-            [
-                'id' => '4',
-                'title' => 'Titolo 4',
-                'content' => 'Descrizione 4',
-                'url' => 'titolo-4'
-            ]
-        ]
-    ]);
-})
+Route::get('/blog/{url}/{id}', [PostController::class, 'show'])
 ->name('article');
