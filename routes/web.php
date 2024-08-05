@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WorkController;
@@ -42,3 +43,11 @@ Route::get('/prodotti', [ProductController::class, 'index'])
 //PAGINA PRODOTTO SINGOLO
 Route::get('/prodotti/{url}/{id}', [ProductController::class, 'show'])
 ->name('prodotti.show');
+
+//PAGINA OFFERTE DI LAVORO
+Route::get('/offerte-di-lavoro', [JobController::class, 'index'])
+->name('lavori.index');
+
+//PAGINA OFFERTA DI LAVORO SINGOLA
+Route::get('/offerte-di-lavoro/{url}/{id}', [JobController::class, 'show'])
+->name('lavori.show');

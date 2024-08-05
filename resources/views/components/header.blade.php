@@ -1,0 +1,19 @@
+<nav>
+    <ul>
+        <li>
+            <a href="{{ route('home.index') }}">Home page</a>
+        </li>
+        <li>
+            <a href="{{ route('portfolio.index') }}">Portfolio</a>
+        </li>
+        <li>
+            <a href="{{ route('gallery.index') }}">Gallery</a>
+        </li>
+        <li>
+            <a href="{{ route('blog.index') }}">Blog</a>
+        </li>
+        <li>
+            <a href="{{ route('prodotti.index') }}">Prodotti</a>
+        </li>
+    </ul>
+</nav>

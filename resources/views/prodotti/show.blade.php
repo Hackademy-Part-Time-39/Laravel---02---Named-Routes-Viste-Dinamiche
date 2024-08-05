@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<x-layout>
     @foreach ( $products as $product )
         @if ( $current_id == $product['id'] )
             <h1>{{ $product['title'] }}</h1>
@@ -16,5 +8,4 @@
     @endforeach
 
     <a href="{{ route('prodotti.index') }}">Torna a tutti i prodotti</a>
-</body>
-</html>
+</x-layout>
