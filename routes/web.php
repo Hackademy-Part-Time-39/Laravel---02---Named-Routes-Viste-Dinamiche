@@ -33,6 +33,14 @@ Route::get('/gallery/{url}/{id}', [PictureController::class, 'show'])
 Route::get('/blog', [PostController::class, 'index'])
 ->name('blog.index');
 
+//PAGINA CREAZIONE ARTICOLO
+Route::get('/blog/nuovo', [PostController::class, 'create'])
+->name('blog.create');
+
+//CREAZIONE ARTICOLO NEL DATABASE
+Route::post('/blog/nuovo', [PostController::class, 'store'])
+->name('blog.store');
+
 //PAGINA ARTICOLO
 Route::get('/blog/{url}/{id}', [PostController::class, 'show'])
 ->name('blog.show');
