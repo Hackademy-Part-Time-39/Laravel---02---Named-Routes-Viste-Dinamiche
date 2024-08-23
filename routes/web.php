@@ -17,6 +17,14 @@ Route::get('/', [HomeController::class, 'index'])
 Route::get('/portfolio', [WorkController::class, 'index'])
 ->name('portfolio.index');
 
+//ROTTA PAGINA CREAZIONE LAVORO
+Route::get('/portfolio/nuovo', [WorkController::class, 'create'])
+->name('portfolio.create');
+
+//ROTTA CREAZIONE LAVORO NEL DATABASE
+Route::post('/portfolio/nuovo', [WorkController::class, 'store'])
+->name('portfolio.store');
+
 //ROTTA LAVORO SINGOLO
 Route::get('/portfolio/{url}/{id}', [WorkController::class, 'show'])
 ->name('portfolio.show');

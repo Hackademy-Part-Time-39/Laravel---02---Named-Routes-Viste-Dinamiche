@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -20,27 +21,31 @@ class PostController extends Controller
     }
 
     //Creazione articolo nel database
-    public function store (Request $request) {
+    public function store (StorePostRequest $request) {
         //Creo record nel database (metodo di default)
+        $image = $request->file('image');
+
         $post = new Post;
 
-        $post->title = $request->titolo;
-        $post->content = $request->contenuto;
+        $post->title = $request->title;
+        $post->content = $request->content;
         $post->url = $request->url;
+        $post->image = $request->url . '.' . $image->extension();
 
         $post->save();
 
+        $path = $image->storeAs( 'public/images', $request->url . '.' . $image->extension() );
+
         //Mass assignment (richiede fillable nel modello)
-        /*
-        Post::create([
-            'title' => $request->titolo,
-            'content' => $request->contenuto,
+        /*Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
             'url' => $request->url
-        ]);
-        */
+        ]);*/
+        
 
         //Altro mass assignment (richiede fillable nel modello)
-        /* Post::create($request->all()); */
+        //Post::create($request->all());
 
         return redirect('/blog');
     }

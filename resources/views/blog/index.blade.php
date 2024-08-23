@@ -6,6 +6,9 @@
         @foreach ($posts as $post)
             <li>
                 <x-card>
+                    @if ($post->image != '')
+                        <img src="{{ asset('storage/images/' . $post->image) }}" alt="{{ $post->title }}" class="img-responsive" style="max-width: 200px">
+                    @endif
                     <h2>{{ $post->title }}</h2>
                     <p>{{ $post->content }}</p>
                     <a href="{{ route('blog.show', [ $post->url, $post->id ]) }}">Leggi tutto</a>

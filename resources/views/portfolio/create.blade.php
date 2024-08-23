@@ -1,5 +1,5 @@
 <x-layout>
-    <h1>Crea un nuovo articolo</h1>
+    <h1>Crea un nuovo lavoro</h1>
 
     @if ($errors->any())
         @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
         @endforeach
     @endif
 
-    <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('portfolio.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
