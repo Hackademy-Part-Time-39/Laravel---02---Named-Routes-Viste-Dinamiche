@@ -18,5 +18,19 @@
         <li>
             <a href="{{ route('contatti.index') }}">Contatti</a>
         </li>
+        <li>
+            <a href="/login">Accedi</a>
+        </li>
+        <li>
+            <a href="/register">Registrati</a>
+        </li>
+        @if (auth()->check())
+            <li>
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+            </li>
+        @endif
     </ul>
 </nav>

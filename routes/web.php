@@ -8,6 +8,7 @@ use App\Http\Controllers\WorkController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PictureController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 //ROTTA HOME PAGE
 Route::get('/', [HomeController::class, 'index'])
@@ -43,7 +44,8 @@ Route::get('/blog', [PostController::class, 'index'])
 
 //PAGINA CREAZIONE ARTICOLO
 Route::get('/blog/nuovo', [PostController::class, 'create'])
-->name('blog.create');
+->name('blog.create')
+->middleware(['auth']);
 
 //CREAZIONE ARTICOLO NEL DATABASE
 Route::post('/blog/nuovo', [PostController::class, 'store'])
@@ -80,3 +82,8 @@ Route::post('/contatti', [ContactController::class, 'submit'])
 //CONFERMA INVIO FORM CONTATTI
 Route::get('/conferma-invio-messaggio', [ContactController::class, 'confirmation'])
 ->name('contatti.confirmation');
+
+//PAGINA PROFILO
+Route::get('/profilo', [ProfileController::class, 'index'])
+->name('auth.profile')
+->middleware(['verified', 'auth']);
